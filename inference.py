@@ -3,8 +3,7 @@ import requests
 import json
 
 API_URL = "http://127.0.0.1:8000/predict"
-INPUT_CSV = "inference.csv"
-OUTPUT_CSV = "result_inference.csv"
+INPUT_CSV = "failure.csv"
 
 def main():
     df = pd.read_csv(INPUT_CSV)

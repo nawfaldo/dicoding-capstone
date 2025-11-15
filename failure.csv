@@ -1,0 +1,27 @@
+UDI,Product_ID,Type,Air_temperature_K,Process_temperature_K,Rotational_speed_rpm,Torque_Nm,Tool_wear_min,Target,Failure_Type
+4662,L51841,L,303.3,311.3,1350,48.1,32,1,Heat Dissipation Failure
+9831,L57010,L,298.3,309.3,1337,56.1,206,1,Overstrain Failure
+4259,M19118,M,302.7,311.1,1297,60.7,125,1,Heat Dissipation Failure
+3815,M18674,M,302.1,310.6,1326,59.1,88,1,Heat Dissipation Failure
+4079,H33492,H,302.1,310.7,1294,62.4,101,1,Heat Dissipation Failure
+4081,L51260,L,302.0,310.4,1357,58.0,108,1,Heat Dissipation Failure
+1834,L49013,L,297.8,307.3,1327,61.0,186,1,Overstrain Failure
+4343,M19202,M,301.7,309.8,1284,68.2,111,1,Power Failure
+4602,M19461,M,303.0,311.1,1372,54.3,117,1,Heat Dissipation Failure
+6498,L53677,L,300.8,309.9,1312,65.3,192,1,Overstrain Failure
+4619,M19478,M,303.0,311.3,1335,53.6,164,1,Heat Dissipation Failure
+4180,L51359,L,302.4,310.9,1349,46.1,148,1,Heat Dissipation Failure
+9415,L56594,L,298.1,308.6,1354,53.9,207,1,Overstrain Failure
+4633,M19492,M,302.9,311.2,1330,53.7,200,1,Heat Dissipation Failure
+4121,M18980,M,302.1,310.7,1376,46.3,210,1,Heat Dissipation Failure
+243,L47422,L,298.0,308.2,1348,58.8,202,1,Overstrain Failure
+4308,L51487,L,301.4,309.9,1259,63.9,20,1,Heat Dissipation Failure
+4428,M19287,M,302.4,310.1,1379,48.9,107,1,Heat Dissipation Failure
+4496,L51675,L,302.6,310.4,1359,57.2,67,1,Heat Dissipation Failure
+4171,M19030,M,302.2,310.6,1355,51.5,126,1,Heat Dissipation Failure
+250,L47429,L,298.0,308.3,1405,56.2,218,1,Overstrain Failure
+7088,L54267,L,300.6,310.3,1648,30.5,217,1,Tool Wear Failure
+4271,L51450,L,302.6,310.9,1331,52.0,154,1,Heat Dissipation Failure
+4728,M19587,M,303.4,311.8,1341,47.0,210,1,Heat Dissipation Failure
+3936,M18795,M,302.6,311.6,1227,68.2,187,1,Overstrain Failure
+2445,L49624,L,299.2,308.6,1267,68.2,76,1,Power Failure
