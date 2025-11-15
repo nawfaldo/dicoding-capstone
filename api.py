@@ -18,8 +18,6 @@ class MachineInput(BaseModel):
     Rotational_speed_rpm: int
     Torque_Nm: float
     Tool_wear_min: int
-    Target: int
-    Failure_Type: str
 
 @app.post("/predict")
 def predict_api(data: MachineInput):
@@ -36,11 +34,6 @@ def predict_api(data: MachineInput):
     df["high_rpm"] = (df["Rotational_speed_rpm"] > df["Rotational_speed_rpm"].median()).astype(int)
 
     df["quality_ord"] = df["quality"].map({'L': 0, 'M': 1, 'H': 2})
-
-    if "Target" in df.columns:
-        df = df.drop(columns=["Target"])
-    if "Failure_Type" in df.columns:
-        df = df.drop(columns=["Failure_Type"])
 
     prob = pipeline.predict_proba(df)[0][1]
 
