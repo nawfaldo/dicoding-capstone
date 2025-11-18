@@ -2,8 +2,8 @@ import pandas as pd
 import requests
 import json
 
-API_URL = "https://jawirgaming66-dicoding-capstone.hf.space/predict"
-INPUT_CSV = "inference_failure.csv"
+API_URL = "http://127.0.0.1:8000/predict"
+INPUT_CSV = "datasets/inference_failure.csv"
 
 def main():
     df = pd.read_csv(INPUT_CSV)
@@ -16,8 +16,13 @@ def main():
             response.raise_for_status()
 
             api_result = response.json()
+            
+            prediction = api_result["binary"]["prediction"]
+            failure_type = api_result["multiclass"]["failure_type"]
 
-            print(f"Row {index} OK → Prediction: {api_result['prediction']}")
+            print(f"\nRow {index} OK")
+            print(f"  Prediction     : {prediction}")
+            print(f"  Failure Type   : {failure_type}")
         except requests.exceptions.RequestException as e:
             print(f"Gagal mengirim data row {index}: {e}")
 
