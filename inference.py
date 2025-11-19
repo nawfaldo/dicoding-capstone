@@ -2,7 +2,7 @@ import pandas as pd
 import requests
 import json
 
-API_URL = "http://127.0.0.1:8000/predict"
+API_URL = "https://jawirgaming66-dicoding-capstone.hf.space/predict"
 INPUT_CSV = "datasets/inference_failure.csv"
 
 def main():
