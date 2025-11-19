@@ -21,39 +21,42 @@ def load_and_clean():
 
 
 def feature_engineering(df):
-    X = df.drop(columns=["Target", "Failure_Type"])
-    X = X.copy()
+    df = df.copy()
 
-    if 'process_temperature_K' in X.columns and 'air_temperature_K' in X.columns:
-        X['temp_diff'] = X['process_temperature_K'] - X['air_temperature_K']
+    drop_cols = [c for c in ["Target", "Failure_Type"] if c in df.columns]
+    df = df.drop(columns=drop_cols)
 
-    if 'torque_Nm' in X.columns and 'rotational_speed_rpm' in X.columns:
-        X['load'] = X['torque_Nm'] * X['rotational_speed_rpm']
+    if 'Process_temperature_K' in df.columns and 'Air_temperature_K' in df.columns:
+        df['temp_diff'] = df['Process_temperature_K'] - df['Air_temperature_K']
 
-    if 'load' in X.columns and 'process_temperature_K' in X.columns:
-        X['stress'] = X['load'] / (X['process_temperature_K'] + 1e-9)
+    if 'Torque_Nm' in df.columns and 'Rotational_speed_rpm' in df.columns:
+        df['load'] = df['Torque_Nm'] * df['Rotational_speed_rpm']
 
-    if 'tool_wear_min' in X.columns and 'serial' in X.columns:
-        X['wear_rate'] = X['tool_wear_min'] / (X['serial'] + 1e-9)
+    if 'load' in df.columns and 'Process_temperature_K' in df.columns:
+        df['stress'] = df['load'] / (df['Process_temperature_K'] + 1e-9)
 
-    if 'torque_Nm' in X.columns and 'process_temperature_K' in X.columns:
-        X['torque_temp_inter'] = X['torque_Nm'] * X['process_temperature_K']
+    if 'Tool_wear_min' in df.columns and 'serial' in df.columns:
+        df['wear_rate'] = df['Tool_wear_min'] / (df['serial'] + 1e-9)
 
-    if 'rotational_speed_rpm' in X.columns:
-        X['high_rpm'] = (X['rotational_speed_rpm'] > X['rotational_speed_rpm'].median()).astype(int)
+    if 'Torque_Nm' in df.columns and 'Process_temperature_K' in df.columns:
+        df['torque_temp_inter'] = df['Torque_Nm'] * df['Process_temperature_K']
 
-    X['quality_ord'] = X['quality'].map({'L': 0, 'M': 1, 'H': 2})
+    if 'Rotational_speed_rpm' in df.columns:
+        df['high_rpm'] = (df['Rotational_speed_rpm'] > df['Rotational_speed_rpm'].median()).astype(int)
 
-    cat_cols = X.select_dtypes(include=['object']).columns.tolist()
-    num_cols = X.select_dtypes(include=[np.number]).columns.tolist()
+    if 'quality' in df.columns:
+        df['quality_ord'] = df['quality'].map({'L': 0, 'M': 1, 'H': 2})
+
+    cat_cols = df.select_dtypes(include=['object']).columns.tolist()
+    num_cols = df.select_dtypes(include=[np.number]).columns.tolist()
 
     for c in cat_cols:
-        X[c] = X[c].fillna(X[c].mode().iloc[0])
+        df[c] = df[c].fillna(df[c].mode().iloc[0])
 
     for c in num_cols:
-        X[c] = X[c].fillna(X[c].median())
+        df[c] = df[c].fillna(df[c].median())
 
-    return X
+    return df
 
 
 def build_preprocessor(X):
