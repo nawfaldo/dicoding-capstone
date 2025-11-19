@@ -3,11 +3,11 @@ from pydantic import BaseModel
 import joblib
 import pandas as pd
 
-binary_dict = joblib.load("model.pkl")
+binary_dict = joblib.load("models/model_binary.pkl")
 binary_pipeline = binary_dict["pipeline"]
 binary_threshold = binary_dict["threshold"]
 
-multi_dict = joblib.load("model_multiclass.pkl")
+multi_dict = joblib.load("models/model_multiclass.pkl")
 multi_pipeline = multi_dict["pipeline"]
 multi_label_encoder = multi_dict["label_encoder"]
 
